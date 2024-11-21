@@ -1,0 +1,6 @@
+.place-photo{
+    width: 100px;
+    height: 70px;
+    border-radius: 5px;
+    overflow: hidden;
+}
