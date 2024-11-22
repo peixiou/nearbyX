@@ -29,7 +29,7 @@ export default function PlaceList() {
                 {
                     places.length > 0 ? places.map(item => {
                         return (
-                            <Place  key={item} id={item} onClick={handleOpenDetail}></Place>
+                            <Place  key={item.id} data={item} onClick={handleOpenDetail}></Place>
                         )
                     }) : <>
                         <img src={imgNoPlace} alt="" srcset="" />

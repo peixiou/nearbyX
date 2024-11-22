@@ -17,9 +17,7 @@ export default function Place(props) {
             requestedLanguage: "zh-tw", // optional
         });
         place.fetchFields({ fields: ["displayName", "formattedAddress", "location", "businessStatus", "rating", "photos","reviews"] }).then(res => {
-            console.log(res);
             setDetail(res.place)
-            console.log(res.place.photos);
 
         })
     }, [id])

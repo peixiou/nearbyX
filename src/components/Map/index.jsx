@@ -44,12 +44,12 @@ function MapRender() {
         if(!markerLocation) return;
         EventBus.on('searchNearbyPlaces', (data) => {
             const { type, radius } = data;
-            
+            // let center = new window.google.maps.LatLng(52.369358, 4.889258);
             window.Place.searchNearby({
                 // required parameters
-                fields: ["displayName", "reviews", "location", "businessStatus", "rating", "formattedAddress", "photos"],
+                fields: ["displayName", "photos", "location", "businessStatus", "rating", "formattedAddress"],
                 locationRestriction: {
-                    center: markerLocation,
+                    center:window.userLocation,
                     radius: radius,
                 },
                 // optional parameters
@@ -57,9 +57,11 @@ function MapRender() {
                 maxResultCount: 10,
                 rankPreference: window.SearchNearbyRankPreference.POPULARITY,
                 language: "zh-tw",
-                region: "cn",
+                region: "us",
             }).then(res => {
                 const { places } = res;
+                console.log(places);
+                
                 markers.current.forEach(item => {
                     item.setMap(null)
                 })
@@ -67,7 +69,7 @@ function MapRender() {
                 setPlaces(places)
               
                 
-                EventBus.emit('placesChange',{places:places.map(item=>item.id)})
+                EventBus.emit('placesChange',{places})
             })
 
             // 根据半径改变zoom
@@ -101,10 +103,10 @@ function MapRender() {
             lng: position.coords.longitude
         })
         window.userLocation = new window.google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        console.log({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-        });
+        // window.userLocation=new window.google.maps.LatLng(
+        //     -122.4194,37.7749
+        // )
+     
 
         var mapOptions = {
             zoom: 18,
