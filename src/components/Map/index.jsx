@@ -23,7 +23,9 @@ function getZoomLevel(radius) {
   
     return 10; // 默认缩放级别
   }
-
+// 创建 Directions Service 和 Directions Renderer
+const directionsService = new window.google.maps.DirectionsService();
+const directionsRenderer = new window.google.maps.DirectionsRenderer();
 function MapRender() {
 
     const [markerLocation, setMarkerLocation] = useState();
@@ -132,12 +134,7 @@ function MapRender() {
     }
 
     const renderRoute=(pos)=> {
-        // 创建 Directions Service 和 Directions Renderer
-        const directionsService = new window.google.maps.DirectionsService();
-        const directionsRenderer = new window.google.maps.DirectionsRenderer();
-      
-        directionsRenderer.setDirections({ routes: [] }); // 清空路线数据
-        directionsRenderer.setMap(null);
+        
         directionsRenderer.setMap(map.current);
 
         // 请求路线
