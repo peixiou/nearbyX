@@ -1,0 +1,20 @@
+
+
+
+
+.open-screen{
+    background: linear-gradient(-175deg,#3a15ff 10%, #9c48fd,hsl(337, 90%, 71%) 70%);
+    /* background-image: url('../../assets/screen_open.png');
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+.app-name{
+    font-size: 68px;
+}
+.begin{
+    width: 170px;
+    height: 54px;
+    line-height: 54px;
+    font-size: 17px;
+    border-radius: 50px;
+}
