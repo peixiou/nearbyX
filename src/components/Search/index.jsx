@@ -1,6 +1,7 @@
 import { useState } from "react";
 import imgDown from '../../assets/down.png'
 import './index.css'
+import EventEmitter from "../../utils/EventEmitter";
 
 
 const PLACETYPES = [
@@ -41,14 +42,19 @@ function Search(props) {
 
     const handleInputChange = (e) => {
         const {value}=e.target;
-        if(+value){
+        if(+value||value===''){
             setRadius(value)
         }
     }
 
     const handleSearch = () => {
-      onSearch({type:current.value,radius:radius})
+        // 搜索动作
+
+        EventEmitter.emit('doNearby',{type:current.value,radius:parseInt(radius)})
+    //   onSearch({type:current.value,radius:parseInt(radius)})
     }
+
+
 
     return (
 
