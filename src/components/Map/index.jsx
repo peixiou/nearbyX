@@ -24,7 +24,7 @@ function getZoomLevel(radius) {
 function Map(props) {
     const { action = {} } = props;
     const [userLocation, setUserLocation] = useState(null);
-    const [error,setError]=useState(false)
+    const [error, setError] = useState(false)
     const map = useRef(null);
 
     useEffect(() => {
@@ -94,7 +94,7 @@ function Map(props) {
 
         window.Place.searchNearby({
             // required parameters
-            fields: ["displayName", "photos", "location", "businessStatus", "rating", "formattedAddress"],
+            fields: ["displayName", "photos", "location", "businessStatus", "rating", "formattedAddress", "reviews"],
             locationRestriction: {
                 center: window.userLocation,
                 radius: radius,
@@ -111,6 +111,8 @@ function Map(props) {
             places.forEach(place => {
                 addMarker(place)
             })
+
+            EventEmitter.emit('placesChange', places)
         })
     }
 
@@ -130,10 +132,10 @@ function Map(props) {
     return (
         <div id="map" className="h-screen z-0">
             {
-                error&&<div className="fixed h-64 bottom-0 bg-white w-full rounded-tl-3xl rounded-tr-3xl flex flex-col items-center justify-center">
-                <img src={imgNoLocation} alt="" srcset="" />
-                <div>該裝置不支持 GPS</div>
-            </div>
+                error && <div className=" fixed h-64 bottom-0 bg-white w-full rounded-tl-3xl rounded-tr-3xl flex flex-col items-center justify-center">
+                    <img src={imgNoLocation} alt="" srcset="" />
+                    <div>該裝置不支持 GPS</div>
+                </div>
             }
         </div>
     )
