@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+![alt text](wucareer-logo.png "WuCareer Logo")
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React 作品訓練營 - nearbyX
 
-## Available Scripts
+**nearbyX** 是 WuCareer 免費前端開發課程中的本地生活網頁應用專案。本專案旨在教授核心前端技能，同時提供一個實用且易用的工具，幫助用戶探索附近的商家。
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 功能
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. **查看用戶定位**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 利用瀏覽器地理定位功能自動獲取用戶當前位置。
+- 在互動地圖上顯示用戶的位置。
 
-### `npm test`
+### 2. **根據類型查找附近商戶**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 用戶可以根據當前位置搜尋商家（例如餐廳、健身房、商店）。
+- 提供類別篩選功能，打造個性化體驗。
 
-### `npm run build`
+### 3. **查看商戶評論**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 提供每個商戶的詳細資訊，包括顧客評論和評分。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 4. **導航到商戶地址**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 顯示從用戶位置到選定商戶的逐步導航路徑。
+- 與地圖服務集成，提供無縫導航體驗。
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 技術棧
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 前端
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **React.js**: 用於構建用戶界面的框架。
+- **Tailwind CSS**: 用於快速構建 UI
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### API
 
-## Learn More
+- **Geolocation API**: 獲取用戶當前位置。
+- **Google Maps API**: 提供商戶搜尋、評論和導航功能。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 快速開始
 
-### Code Splitting
+程式碼將依照課程的推進而逐漸釋放出來，day 0 為專案起始檔案，day 1 為第一天上課所完成的程式碼... 以此類推
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 先決條件
 
-### Analyzing the Bundle Size
+- 系統已安裝 Node.js。
+- Google Maps API 金鑰（[點此申請](https://developers.google.com/maps)）。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 安裝
 
-### Making a Progressive Web App
+1. 克隆此倉庫：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```bash
+   git clone https://github.com/yourusername/nearbyX.git
+   ```
 
-### Advanced Configuration
+2. 進入專案目錄：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   ```bash
+   cd nearbyX
+   ```
 
-### Deployment
+3. 安裝依賴：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   ```bash
+   npm install
+   ```
 
-### `npm run build` fails to minify
+4. 啟動開發伺服器：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```bash
+   npm start
+   ```
+
+5. 打開瀏覽器訪問 [http://localhost:3000](http://localhost:3000) 查看應用。
+
+---
+
+## 致謝
+
+- 感謝 [吾課校長](https://github.com/Shinyui) 對此專案的發想及設計
+- 感謝 [溫攀 Eric Wen 老師](https://github.com/ericfetch) 對此專案的教學及實現
