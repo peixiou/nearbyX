@@ -1,26 +1,11 @@
-import { useState } from 'react';
-import Map from './components/Map';
-import OpenScreen from './components/OpenScreen';
-import Search from './components/Search';
+import React from "react";
 
-
-function App() {
-
-  const [visible, setVisible] = useState(true)
-
-
-
-  const handleOpenMap=()=>{
-    setVisible(false)
-  }
-
+const App = () => {
   return (
-    <div className="h-screen">
-      {visible && <OpenScreen onClick={handleOpenMap} a={'b'}></OpenScreen>}
-      <Map></Map>
-      <Search onSearch={(data)=>{window.console.log('------',data)}}></Search>
-    </div>
+    <>
+      <div className="text-4xl text-red-500">Hello WuCareer</div>
+    </>
   );
-}
+};
 
 export default App;
