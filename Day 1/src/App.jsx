@@ -7,18 +7,21 @@ import Search from './components/Search';
 function App() {
 
   const [visible, setVisible] = useState(true)
-
-
+  const [searchData,setSearchData]=useState()
 
   const handleOpenMap=()=>{
     setVisible(false)
   }
 
+  const handleSearch=(data)=>{
+    setSearchData(data)
+  }
+
   return (
     <div className="h-screen">
       {visible && <OpenScreen onClick={handleOpenMap} a={'b'}></OpenScreen>}
-      <Map></Map>
-      <Search onSearch={(data)=>{window.console.log('------',data)}}></Search>
+      <Map action={{type:1,data:searchData}}></Map>
+      <Search onSearch={handleSearch}></Search>
     </div>
   );
 }
