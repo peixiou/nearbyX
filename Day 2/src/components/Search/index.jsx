@@ -2,6 +2,8 @@
 import './index.css'
 import imgDown from '../../assets/down.png'
 import { useState } from 'react'
+import EventBus from '../../utils/EventBus';
+import EventEmitter from '../../utils/EventEmitter';
 
 const PLACETYPES = [
     {
@@ -46,7 +48,8 @@ export default function Search(props) {
 
 
     const hanldeClick = () => {
-        onSearch({type:current.value,radius})
+        EventEmitter.emit('search',{type:current.value,radius:parseInt(radius)})
+        // onSearch({type:current.value,radius:parseInt(radius)})
     }
 
     return (
