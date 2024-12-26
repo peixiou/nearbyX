@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Map from './components/Map';
 import OpenScreen from './components/OpenScreen';
 import Search from './components/Search';
+import PlaceList from './components/PlaceList';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       {visible && <OpenScreen onClick={handleOpenMap} a={'b'}></OpenScreen>}
       <Map action={{type:1,data:searchData}}></Map>
       <Search onSearch={handleSearch}></Search>
+      <PlaceList></PlaceList>
     </div>
   );
 }

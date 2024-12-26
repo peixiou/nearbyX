@@ -5,8 +5,10 @@ import { useEffect, useRef, useState } from "react"
 import imgNoLocation from '../../assets/nolocation.png'
 import EventBus from "../../utils/EventBus";
 import EventEmitter from "../../utils/EventEmitter";
+const directionsRenderer = new window.google.maps.DirectionsRenderer();
 
 function getZoomLevel(radius) {
+
     // 半径到缩放级别的简单映射
     const zoomRadiusMap = [
         { radius: 100, zoom: 18 },
@@ -24,6 +26,7 @@ function getZoomLevel(radius) {
     return 10; // 默认缩放级别
 }
 function Map(porps) {
+
     const { action } = porps;
     const [error, setError] = useState(false)
     const [places, setPlaces] = useState([])
@@ -42,6 +45,10 @@ function Map(porps) {
             }
         })
 
+        EventEmitter.on('renderRoute', (pos) => {
+            renderRoute(pos)
+        })
+
     }, [])
 
 
@@ -51,14 +58,14 @@ function Map(porps) {
 
         window.Place.searchNearby({
             // required parameters
-            fields: ["displayName", "photos", "location", "businessStatus", "rating", "formattedAddress"],
+            fields: ["displayName", "photos", "location", "businessStatus", "rating", "formattedAddress", "reviews"],
             locationRestriction: {
                 center: window.userLocation,
                 radius: radius,
             },
             // optional parameters
             includedPrimaryTypes: [type],
-            maxResultCount: 10,
+            maxResultCount: 20,
             rankPreference: window.SearchNearbyRankPreference.POPULARITY,
             language: "zh-tw",
             region: "us",
@@ -66,6 +73,7 @@ function Map(porps) {
             const { places } = res;
             setPlaces(places)
             map.current.setZoom(getZoomLevel(radius))
+            EventEmitter.emit('nearbyPlaces', places)
         })
 
     }
@@ -119,6 +127,27 @@ function Map(porps) {
         }
     }
 
+
+    const renderRoute = (pos) => {
+        // 创建 Directions Service 和 Directions Renderer
+        // 回顾第二天的知识
+        const directionsService = new window.google.maps.DirectionsService();
+
+
+        directionsRenderer.setMap(map.current)
+        directionsService.route({
+            origin: window.userLocation,
+            destination: pos,
+            travelMode: window.google.maps.TravelMode.WALKING
+        }, (res, status) => {
+            
+            if (status === 'OK') {
+                directionsRenderer.setDirections(res)
+            } else {
+                alert('路线绘制失败？')
+            }
+        })
+    }
 
     return (
         <div id="map" className='h-screen z-0'>
